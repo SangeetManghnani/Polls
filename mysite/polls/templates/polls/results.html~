@@ -1,0 +1,21 @@
+{% load staticfiles %}
+
+
+<div class="list-group" id="top">
+
+<a href="#" class="list-group-item active">
+    <h4>{{ question.question_text }}</h4>
+  </a>
+<ul class = "list-group">
+{% for choice in question.choice_set.all %}
+	<li class = "list-group-item">
+		<span class="badge">{{ choice.votes }}</span>
+	{{ choice.choice_text }} 
+	</li>
+{% endfor %}
+</ul>
+
+<a href = "{% url 'polls:detail' question.id %}" class="btn btn-default"> Vote Again ? </a>
+</div>
+<link rel = "stylesheet" type = "text/css" href= "{% static 'polls/css/bootstrap.min.css' %}" />
+<link rel = "stylesheet" type = "text/css" href= "{% static 'polls/style.css' %}" />

@@ -1,0 +1,21 @@
+{% if latest_question_list %}
+
+<div class="list-group" id="top">
+	
+	 <a href="#" class="list-group-item active">
+    	 	Questions
+	</a>
+
+	{% for question in latest_question_list %}
+		<a href="{% url 'polls:detail' question.id %}" class="list-group-item">{{ question.question_text }}</a>
+	{% endfor %}
+
+</div>
+
+{% else %}
+	<p>No Polls available.</p>
+{% endif %}
+
+{% load staticfiles %}
+
+<link rel = "stylesheet" type = "text/css" href= "{% static 'polls/css/bootstrap.min.css' %}" />
